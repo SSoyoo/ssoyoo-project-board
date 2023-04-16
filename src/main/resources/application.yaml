@@ -14,18 +14,19 @@ spring:
     password: password!
     driver-class-name: com.mysql.cj.jdbc.Driver
 
-jpa:
-  defer-datasorce-initialization: true
-  hibernate.ddl-auto: create
-  show-sql: true
-  properties:
-    hibernate.format_sql:  true
-    hibernate.default_batch_fetch_size: 100
+  jpa:
+    defer-datasource-initialization: true
+    hibernate.ddl-auto: create
+    open-in-view: false
+    show-sql: true
+
+    properties:
+      hibernate.format_sql:  true
+      hibernate.default_batch_fetch_size: 100
+
   h2.console.enabled: false
   sql.init.mode: always
 
 ---
-spring:
-  config.activate.on-profile: testdb
 
 
