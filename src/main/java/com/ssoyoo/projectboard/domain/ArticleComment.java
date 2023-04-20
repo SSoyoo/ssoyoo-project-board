@@ -21,8 +21,9 @@ import java.util.Optional;
         @Index(columnList = "createdAt"),
         @Index(columnList = "createdBy")
 } )
+@EntityListeners(AuditingEntityListener.class)
 @Entity
-public class ArticleComment extends AuditingFields {
+public class ArticleComment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,7 +32,10 @@ public class ArticleComment extends AuditingFields {
     @Setter @ManyToOne(optional = false) private Article article; //게시글id
     @Column(nullable = false,length = 500) private String content; //본문
 
-
+    @CreatedDate @Column(nullable = false) private LocalDateTime createdAt; //생성일시
+    @CreatedBy @Column(nullable = false, length = 100) private String createdBy; //생성자
+    @LastModifiedDate @Column(nullable = false) private LocalDateTime modifiedAt; // 수정일시
+    @LastModifiedBy @Column(nullable = false) private String modifiedBy; // 수정자
 
     protected ArticleComment() {
     }
